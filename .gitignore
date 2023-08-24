@@ -1,0 +1,6 @@
+# ---- Hiding node modules folder
+/node_modules
+
+# ---- Hiding local environment file
+.env*.local
+.env
