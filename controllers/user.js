@@ -31,7 +31,7 @@ exports.AddNewUser = async (req, res) => {
             });
         }
 
-        const verifyLink = `${process.env.ORIGIN_HOST}/user/verify?token=${token}`;
+        const verifyLink = `${process.env.ORIGIN_HOST}/auth/verify?token=${token}`;
         const sendMail = await SendVerifyLink(data.email, `${data.firstname} ${data.lastname}`, verifyLink);
 
 
