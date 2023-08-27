@@ -1,7 +1,8 @@
 const userModel = require("../models/userModel");
+const blogModel = require("../models/blogModel");
+
 const { GenerateHashPassword, VerifyHashPassword } = require("../libs/HashPassword");
 const { GenerateToken, VerifyToken } = require("../libs/JwtToken");
-const blogModel = require("../models/blogModel");
 const { SendVerifyLink } = require("../SendMail/VerifySendMail");
 
 
@@ -23,7 +24,6 @@ exports.AddNewUser = async (req, res) => {
         const createUser = await userModel.create({ ...data, password: hashPassword, token });
 
         if (!createUser) {
-
             return res.status(500).json({
                 success: false,
                 error: true,
@@ -41,7 +41,6 @@ exports.AddNewUser = async (req, res) => {
             message: `verification link sended to ${data.email}`
         });
     } catch (err) {
-
         return res.status(500).json({
             success: false,
             error: true,
@@ -54,7 +53,6 @@ exports.AddNewUser = async (req, res) => {
 exports.VerifyUserLink = async (req, res) => {
     const { token } = req.query;
     if (!token) {
-
         return res.status(498).json({
             success: false,
             error: true,
@@ -65,7 +63,6 @@ exports.VerifyUserLink = async (req, res) => {
     try {
         const verifyUser = await userModel.findOneAndUpdate({ token }, { verified: true, token: null });
         if (!verifyUser) {
-
             return res.status(498).json({
                 success: false,
                 error: true,
@@ -73,14 +70,12 @@ exports.VerifyUserLink = async (req, res) => {
             });
         }
 
-
         return res.status(201).json({
             success: true,
             error: false,
             message: `${verifyUser.email} Successfully Verified`
         });
     } catch (err) {
-
         return res.status(500).json({
             success: false,
             error: true,
@@ -88,6 +83,7 @@ exports.VerifyUserLink = async (req, res) => {
         });
     }
 }
+
 
 // ------ LOgin User
 exports.LoginUser = async (req, res) => {

@@ -30,6 +30,14 @@ server.use('/user',userRouter);
 server.use('/blog',blogRouter);
 
 
+server.get('/',(req,res)=>{
+    return res.status(200).json({
+        success:true,
+        error:false,
+        message:'Welcome to BlogSpot Backend Server'
+    })
+})
+
 // ------ Running server on Available Ports
 server.listen(PORT,()=>{
     console.log(`Server running ${PORT}`);
