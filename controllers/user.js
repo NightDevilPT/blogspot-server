@@ -88,6 +88,7 @@ exports.VerifyUserLink = async (req, res) => {
 // ------ LOgin User
 exports.LoginUser = async (req, res) => {
     const { email, password } = req.body;
+    console.log(req);
 
     try {
         const findUser = await userModel.findOne({ email });

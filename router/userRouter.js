@@ -23,7 +23,7 @@ const { VerifyHeaderToken } = require("../middleware/middlewares");
 // ------- User Router Paths
 userRouter.get("/", GetAnotherUserProfile);
 userRouter.get("/profile", VerifyHeaderToken, GetUserProfile);
-userRouter.get("/login", LoginUser);
+userRouter.post("/login", LoginUser);
 userRouter.post("/create", AddNewUser);
 userRouter.put("/verify", VerifyUserLink);
 userRouter.put("/update", VerifyHeaderToken, UpdateUserData);
