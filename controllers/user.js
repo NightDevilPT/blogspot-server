@@ -155,7 +155,6 @@ exports.LoginUser = async (req, res) => {
 // ------ Sending Update Password Link
 exports.SendUpdatePasswordLink = async (req, res) => {
 	const { email } = req.body;
-    console.log(email);
 
 	try {
 		const findUser = await userModel.findOne({ email });
@@ -188,7 +187,7 @@ exports.SendUpdatePasswordLink = async (req, res) => {
 				message: "Internal Server Error",
 			});
 		}
-		const updateLink = `${process.env.ORIGIN_HOST}/auth/update?token=${token}`;
+		const updateLink = `${process.env.ORIGIN_HOST}/auth/updatePassword?token=${token}`;
 		const sendMail = await UpdatePasswordLink(
 			updateToken.email,
 			`${updateToken.firstname} ${updateToken.lastname}`,
