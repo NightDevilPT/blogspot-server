@@ -200,7 +200,7 @@ exports.SendUpdatePasswordLink = async (req, res) => {
 			message: `Update link sended to ${updateToken.email}`,
 		});
 	} catch (err) {
-        console.log(err);
+		console.log(err);
 		return res.status(500).json({
 			success: false,
 			error: true,
@@ -223,7 +223,7 @@ exports.UpdatePassword = async (req, res) => {
 
 	try {
 		const hashPassword = await GenerateHashPassword(password);
-		const updatePassword = userModel.findOneAndUpdate(
+		const updatePassword = await userModel.findOneAndUpdate(
 			{ token },
 			{ password: hashPassword, token: null }
 		);
@@ -242,7 +242,7 @@ exports.UpdatePassword = async (req, res) => {
 			message: "Password successfully updated.",
 		});
 	} catch (err) {
-        console.log(err);
+		console.log(err);
 		return res.status(500).json({
 			success: false,
 			error: true,
