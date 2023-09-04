@@ -17,12 +17,16 @@ const {
 	GetAnotherUserProfile,
 	UpdateSaved,
 	UpdateFollowers,
+	SendUpdatePasswordLink,
+	UpdatePassword,
 } = require("../controllers/user");
 const { VerifyHeaderToken } = require("../middleware/middlewares");
 
 // ------- User Router Paths
 userRouter.get("/", GetAnotherUserProfile);
 userRouter.get("/profile", VerifyHeaderToken, GetUserProfile);
+userRouter.post("/sendupdatelink",SendUpdatePasswordLink);
+userRouter.put("/updatepassword",UpdatePassword);
 userRouter.post("/login", LoginUser);
 userRouter.post("/create", AddNewUser);
 userRouter.put("/verify", VerifyUserLink);

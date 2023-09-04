@@ -10,7 +10,7 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-exports.SendVerifyLink = async (senderMail,Username, VerifyLink) => {
+exports.UpdatePasswordLink = async (senderMail,Username, VerifyLink) => {
     const template = `
     <!DOCTYPE HTML
   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -237,8 +237,8 @@ exports.SendVerifyLink = async (senderMail,Username, VerifyLink) => {
                                         <p style="line-height: 140%; font-size: 14px;"><strong>For Exploring or Creating Awesome
                                             , New Blog you need to Verify your Email-Id</strong></p>
                                         <p style="line-height: 140%; font-size: 14px;"> </p>
-                                        <p style="line-height: 140%; font-size: 14px;"><strong>Click Here to Verify Email-Id :
-                                            <span style="color: #3598db; line-height: 19.6px;"><a href='${VerifyLink}'>Verify Email-ID</a></span></strong></p>
+                                        <p style="line-height: 140%; font-size: 14px;"><strong>Click Here to Update Password :
+                                            <span style="color: #3598db; line-height: 19.6px;"><a href='${VerifyLink}'>Update Password</a></span></strong></p>
                                         <p style="line-height: 140%; font-size: 14px;"> </p>
                                         <p style="line-height: 140%; font-size: 14px;"> </p>
                                         <p style="line-height: 140%; font-size: 14px;"><span
@@ -472,7 +472,7 @@ exports.SendVerifyLink = async (senderMail,Username, VerifyLink) => {
     var mailOptions = {
         from: process.env.EMAIL_ID,
         to: senderMail,
-        subject: 'Email Verification',
+        subject: 'Update Password',
         html: template
     }
 
@@ -481,7 +481,7 @@ exports.SendVerifyLink = async (senderMail,Username, VerifyLink) => {
         return {
             success:true,
             error:false,
-            message:`verification link sended to ${data.email}`
+            message:`Update link sended to ${data.email}`
         }
     }catch(err){
         return {
