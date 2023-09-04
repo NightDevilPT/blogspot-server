@@ -16,7 +16,7 @@ const server = express();
 
 // ------ Using common middleware
 server.use(cors({
-    origin:['http://localhost:3000']
+    origin:['http://localhost:3000','https://blogsphere-web-app.vercel.app']
 }));
 
 server.use(express.json());
