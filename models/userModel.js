@@ -61,6 +61,10 @@ const userSchema = new mongoose.Schema({
 		type: String,
 		default: "",
 	},
+	likedin: {
+		type: String,
+		default: "",
+	},
 	followers: {
 		type: Array,
 		default: [],
