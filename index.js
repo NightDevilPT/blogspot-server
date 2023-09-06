@@ -19,8 +19,8 @@ server.use(cors({
     origin:['http://localhost:3000','https://blogsphere-web-app.vercel.app']
 }));
 
-server.use(express.json());
-server.use(express.urlencoded({extended:true}));
+server.use(express.json({limit:"16mb",extended:true}));
+server.use(express.urlencoded({extended:true,limit:"16mb",parameterLimit:50000}));
 server.use(ConnectDB);
 
 

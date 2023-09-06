@@ -251,6 +251,7 @@ exports.UpdatePassword = async (req, res) => {
 	}
 };
 
+
 // ------ Update User Data
 exports.UpdateUserData = async (req, res) => {
 	const { tokenData } = res;
